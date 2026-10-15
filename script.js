@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. CONFIRMAÇÃO DE PRESENÇA (RSVP COM GOOGLE SHEETS)
   // =========================================================================
   // Cole aqui a URL do seu Google Apps Script (Web App) para salvar na Planilha:
-  const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxPmJnWBEV0kTZ-3-yjkSruN9JFtTvJhkLj5MLrll1GvB60CanUJ0J9Yxgununm-FlO/exec";
+  const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxs20adFx8ceuz7PiPWTuec2UHGqtnadjuHX1q8M3Ya1dcjzxhWxPI48k-HYlE5ArUM/exec";
   const rsvpForm = document.getElementById('rsvp-form');
   const attendanceDetails = document.getElementById('attendance-details');
   const rsvpSuccessBox = document.getElementById('rsvp-success-box');
