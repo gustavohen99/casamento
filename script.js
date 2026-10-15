@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. CONFIRMAÇÃO DE PRESENÇA (RSVP COM GOOGLE SHEETS)
   // =========================================================================
   // Cole aqui a URL do seu Google Apps Script (Web App) para salvar na Planilha:
-  const GOOGLE_SHEETS_URL = "";
+  const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxPmJnWBEV0kTZ-3-yjkSruN9JFtTvJhkLj5MLrll1GvB60CanUJ0J9Yxgununm-FlO/exec";
   const rsvpForm = document.getElementById('rsvp-form');
   const attendanceDetails = document.getElementById('attendance-details');
   const rsvpSuccessBox = document.getElementById('rsvp-success-box');
@@ -254,21 +254,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Envia diretamente para a Planilha do Google Sheets (se configurada)
       if (GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.trim() !== '') {
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('phone', phone);
-        formData.append('attendance', attendance);
-        formData.append('adults', attendance === 'sim' ? adults : 0);
-        formData.append('kids', attendance === 'sim' ? kids : 0);
-        formData.append('companions', attendance === 'sim' ? companions : '');
-        formData.append('diet', attendance === 'sim' ? diet : '');
-        formData.append('message', message);
-        formData.append('date', new Date().toLocaleString('pt-BR'));
+        const params = new URLSearchParams();
+        params.append('name', name);
+        params.append('phone', phone);
+        params.append('attendance', attendance);
+        params.append('adults', attendance === 'sim' ? adults : 0);
+        params.append('kids', attendance === 'sim' ? kids : 0);
+        params.append('companions', attendance === 'sim' ? companions : '');
+        params.append('diet', attendance === 'sim' ? diet : '');
+        params.append('message', message);
+        params.append('date', new Date().toLocaleString('pt-BR'));
 
         fetch(GOOGLE_SHEETS_URL, {
           method: 'POST',
           mode: 'no-cors',
-          body: formData
+          body: params
         }).catch(err => console.error('Erro ao enviar para Google Sheets:', err));
       }
 
