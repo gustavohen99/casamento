@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Camila & Gustavo • Convite de Casamento | 12 de Dezembro de 2026</title>
+  <meta name="description" content="Venha celebrar o amor e a união de Camila & Gustavo no Florença Festas em São José dos Pinhais - PR. Confirme sua presença e veja a localização.">
+  
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Casamento Camila & Gustavo • 12.12.2026">
+  <meta property="og:description" content="Venha celebrar o amor e a união conosco no Florença Festas às 16h30. Confirme sua presença!">
+  <meta property="og:image" content="assets/convite_interno.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Mobile-First -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/monogram_transparent.png">
+</head>
+<body class="mobile-first-body">
+
+  <!-- Canvas de partículas suaves de fundo -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Container Mobile Principal (Centralizado em telas grandes, 100% no celular) -->
+  <div class="mobile-app-shell">
+
+    <!-- Top Bar Discreta -->
+    <header class="mobile-top-bar">
+      <div class="top-bar-inner">
+        <a href="#convite-nativo" class="top-bar-brand">
+          <img src="assets/monogram_transparent.png" alt="Monograma CG" class="top-bar-logo">
+          <span class="top-bar-title">Camila & Gustavo</span>
+        </a>
+        <a href="#rsvp" class="top-bar-rsvp-btn">Confirmar</a>
+      </div>
+    </header>
+
+    <main class="mobile-content">
+
+      <!-- ====================================================================
+           1. TELA NATIVA DO CONVITE (Recreação 100% nativa do layout original)
+           ==================================================================== -->
+      <section id="convite-nativo" class="native-invite-screen">
+        
+        <!-- Cartão Nativo -->
+        <div class="native-invite-card">
+          
+          <!-- Texto Superior -->
+          <div class="invite-header-block">
+            <h1 class="invite-main-heading">
+              <span class="invite-names">CAMILA & GUSTAVO</span>
+              <span class="invite-sub">CONVIDAM PARA O SEU CASAMENTO</span>
+            </h1>
+          </div>
+
+          <!-- Monograma CG com Grinalda Floral -->
+          <div class="invite-monogram-block">
+            <div class="monogram-wrapper">
+              <img src="assets/monogram_transparent.png" alt="Monograma CG Camila e Gustavo" class="invite-monogram-img">
+            </div>
+          </div>
+
+          <!-- Aquarela do Espaço Florença Festas -->
+          <div class="invite-venue-illustration-block">
+            <img src="assets/venue_watercolor_clean.png" alt="Aquarela do Florença Festas" class="invite-venue-watercolor">
+          </div>
+
+          <!-- Frase de Celebração -->
+          <div class="invite-quote-block">
+            <p class="invite-quote-line">VENHA CELEBRAR O AMOR</p>
+            <p class="invite-quote-line">E A UNIÃO CONOSCO</p>
+          </div>
+
+          <!-- Bloco da Data (Idêntico ao layout oficial) -->
+          <div class="invite-date-block">
+            <div class="date-row">
+              <div class="date-side-rule left-rule">
+                <span class="date-day-label">SÁBADO</span>
+              </div>
+              
+              <div class="date-number-col">
+                <span class="date-big-number">12</span>
+              </div>
+              
+              <div class="date-side-rule right-rule">
+                <span class="date-time-label">ÀS 16H30</span>
+              </div>
+            </div>
+            
+            <div class="date-month-row">
+              <span class="date-month-label">DEZEMBRO</span>
+            </div>
+          </div>
+
+          <!-- Bloco de Localização do Convite -->
+          <div class="invite-location-block">
+            <p class="invite-venue-title">FLORENÇA FESTAS</p>
+            <p class="invite-venue-address">R. JÚLIO CÉSAR SETENARESKI, 2493 -</p>
+            <p class="invite-venue-city">COLÔNIA MURICI, SÃO JOSÉ DOS PINHAIS</p>
+          </div>
+
+          <!-- Botões de Ação Rápida Mobile -->
+          <div class="native-invite-actions">
+            <a href="#rsvp" class="btn-app-primary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Confirmar Minha Presença
+            </a>
+            <div class="action-sub-buttons">
+              <a href="#local" class="btn-app-secondary">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Ver Local & Mapa
+              </a>
+              <a href="#presentes" class="btn-app-secondary">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                Lua de Mel Pix
+              </a>
+            </div>
+          </div>
+
+          <div class="scroll-indicator-native">
+            <a href="#contagem" class="scroll-arrow-link" title="Ver mais">
+              <span class="scroll-label">Deslize para ver detalhes</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. CONTAGEM REGRESSIVA (12 DE DEZEMBRO DE 2026 ÀS 16H30)
+           ==================================================================== -->
+      <section id="contagem" class="mobile-section">
+        <div class="mobile-section-header">
+          <span class="section-script-tag">Falta pouco!</span>
+          <h2 class="mobile-section-title">Contagem Regressiva</h2>
+          <p class="mobile-section-subtitle">Para o momento mais esperado das nossas vidas</p>
+        </div>
+
+        <div class="countdown-mobile-grid">
+          <div class="cd-box">
+            <span class="cd-num" id="days">--</span>
+            <span class="cd-lbl">Dias</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="hours">--</span>
+            <span class="cd-lbl">Horas</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="minutes">--</span>
+            <span class="cd-lbl">Minutos</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="seconds">--</span>
+            <span class="cd-lbl">Segundos</span>
+          </div>
+        </div>
+
+        <div class="calendar-card-mobile">
+          <div class="calendar-date-pill">
+            <span class="pill-day">SÁBADO • 12 DE DEZEMBRO DE 2026</span>
+            <span class="pill-time">ÀS 16H30</span>
+          </div>
+          <div class="calendar-btn-row">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Camila+%26+Gustavo&dates=20261212T193000Z/20261213T030000Z&details=Casamento+de+Camila+%26+Gustavo+no+Floren%C3%A7a+Festas.+Esperamos+por+voc%C3%AA!&location=Floren%C3%A7a+Festas+-+R.+J%C3%BAlio+C%C3%A9sar+Setenareski,+2493+-+Col%C3%B4nia+Murici,+S%C3%A3o+Jos%C3%A9+dos+Pinhais+-+PR" 
+               target="_blank" rel="noopener noreferrer" class="btn-cal">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+              Google Agenda
+            </a>
+            <button id="btn-download-ics" class="btn-cal">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Apple / iCal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. O LOCAL (FLORENÇA FESTAS)
+           ==================================================================== -->
+      <section id="local" class="mobile-section">
+        <div class="mobile-section-header">
+          <span class="section-script-tag">Como Chegar</span>
+          <h2 class="mobile-section-title">Florença Festas</h2>
+          <p class="mobile-section-subtitle">Colônia Murici • Caminho do Vinho • PR</p>
+        </div>
+
+        <div class="venue-mobile-card">
+          <div class="venue-mobile-thumb">
+            <img src="assets/venue_crop.jpg" alt="Florença Festas" class="venue-thumb-img">
+            <span class="venue-pill-badge">São José dos Pinhais</span>
+          </div>
+
+          <div class="venue-body-mobile">
+            <h3 class="venue-title-mobile">Florença Festas & Eventos</h3>
+            
+            <div class="venue-info-row">
+              <div class="v-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div class="v-text">
+                <strong>Endereço:</strong>
+                <span>Rua Júlio César Setenareski, 2493<br>Colônia Murici, São José dos Pinhais - PR</span>
+              </div>
+            </div>
+
+            <div class="venue-info-row">
+              <div class="v-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </div>
+              <div class="v-text">
+                <strong>Horário:</strong>
+                <span>Início às <strong>16h30</strong></span>
+              </div>
+            </div>
+
+            <div class="venue-info-row">
+              <div class="v-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+              </div>
+              <div class="v-text">
+                <strong>Estacionamento:</strong>
+                <span>Privativo e gratuito no local</span>
+              </div>
+            </div>
+
+            <!-- Botões Diretos de GPS para Celular -->
+            <div class="venue-gps-buttons">
+              <a href="https://www.google.com/maps/search/?api=1&query=Floren%C3%A7a+Festas+-+Rua+J%C3%BAlio+C%C3%A9sar+Setenareski,+2493+-+Col%C3%B4nia+Murici,+S%C3%A3o+Jos%C3%A9+dos+Pinhais+-+PR" target="_blank" rel="noopener noreferrer" class="btn-gps btn-gmaps">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Google Maps
+              </a>
+              <a href="https://waze.com/ul?ll=-25.5642681,-49.1194311&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-gps btn-waze-m">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-10 10c0 4.418 2.865 8.167 6.84 9.49.255.085.51.05.67-.107l1.09-1.07c.28-.275.66-.43 1.05-.43.39 0 .77.155 1.05.43l1.09 1.07c.16.157.415.192.67.107C19.135 20.167 22 16.418 22 12A10 10 0 0 0 12 2zm-3 8a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-5.5 5.5a4.5 4.5 0 0 0 5 0 .5.5 0 0 1 .6.8 5.5 5.5 0 0 1-6.2 0 .5.5 0 0 1 .6-.8z"/></svg>
+                Waze
+              </a>
+            </div>
+
+            <button id="btn-copy-address" class="btn-copy-addr-full">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span id="copy-address-label">Copiar Endereço Completo</span>
+            </button>
+
+          </div>
+
+          <!-- Mapa Embedado com Endereço Exato -->
+          <div class="map-container-mobile">
+            <iframe 
+              title="Localização exata do Florença Festas no Google Maps"
+              src="https://maps.google.com/maps?q=Floren%C3%A7a+Festas+-+Rua+J%C3%BAlio+C%C3%A9sar+Setenareski,+2493+-+Col%C3%B4nia+Murici,+S%C3%A3o+Jos%C3%A9+dos+Pinhais+-+PR&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="260" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           4. CONFIRMAÇÃO DE PRESENÇA (RSVP)
+           ==================================================================== -->
+      <section id="rsvp" class="mobile-section">
+        <div class="rsvp-card-mobile">
+          
+          <div class="mobile-section-header">
+            <img src="assets/monogram_transparent.png" alt="CG" class="rsvp-mini-logo">
+            <span class="section-script-tag">Sua presença é essencial</span>
+            <h2 class="mobile-section-title">Confirmar Presença</h2>
+            <p class="rsvp-deadline-text">Por favor, confirme até <strong>30 de Novembro de 2026</strong></p>
+          </div>
+
+          <form id="rsvp-form" class="mobile-form">
+            <div class="form-group-m">
+              <label for="rsvp-name">Seu Nome Completo *</label>
+              <input type="text" id="rsvp-name" name="name" required placeholder="Ex: Lucas Silva" class="input-m">
+            </div>
+
+            <div class="form-group-m">
+              <label for="rsvp-phone">WhatsApp / Celular *</label>
+              <input type="tel" id="rsvp-phone" name="phone" required placeholder="(41) 99999-9999" class="input-m">
+            </div>
+
+            <div class="form-group-m">
+              <label>Você irá comparecer? *</label>
+              <div class="radio-pill-group">
+                <label class="radio-pill">
+                  <input type="radio" name="attendance" value="sim" checked>
+                  <span class="pill-btn">Sim, com certeza! 🎉</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="attendance" value="nao">
+                  <span class="pill-btn">Infelizmente não 💔</span>
+                </label>
+              </div>
+            </div>
+
+            <div id="attendance-details" class="attendance-details-m">
+              <div class="form-row-m">
+                <div class="form-group-m half">
+                  <label for="rsvp-adults">Adultos</label>
+                  <select id="rsvp-adults" name="adults" class="input-m">
+                    <option value="1">1 (Apenas eu)</option>
+                    <option value="2">2 pessoas</option>
+                    <option value="3">3 pessoas</option>
+                    <option value="4">4 pessoas</option>
+                    <option value="5">5 pessoas</option>
+                  </select>
+                </div>
+                <div class="form-group-m half">
+                  <label for="rsvp-kids">Crianças (até 10)</label>
+                  <select id="rsvp-kids" name="kids" class="input-m">
+                    <option value="0">Nenhuma</option>
+                    <option value="1">1 criança</option>
+                    <option value="2">2 crianças</option>
+                    <option value="3">3 crianças</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group-m">
+                <label for="rsvp-companions">Nome dos Acompanhantes</label>
+                <input type="text" id="rsvp-companions" name="companions" placeholder="Ex: Esposa(o), Filhos..." class="input-m">
+              </div>
+
+              <div class="form-group-m">
+                <label for="rsvp-diet">Restrição Alimentar</label>
+                <input type="text" id="rsvp-diet" name="diet" placeholder="Ex: Vegetariano, Sem glúten, etc." class="input-m">
+              </div>
+            </div>
+
+            <div class="form-group-m">
+              <label for="rsvp-message">Recado carinhoso para os noivos</label>
+              <textarea id="rsvp-message" name="message" rows="3" placeholder="Deixe uma mensagem para nós..." class="input-m"></textarea>
+            </div>
+
+            <div class="form-buttons-m">
+              <button type="submit" id="btn-submit-rsvp" class="btn-app-primary">
+                Confirmar Presença no Site
+              </button>
+              <button type="button" id="btn-whatsapp-rsvp" class="btn-app-whatsapp">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+                Confirmar pelo WhatsApp
+              </button>
+            </div>
+          </form>
+
+          <!-- Sucesso -->
+          <div id="rsvp-success-box" class="rsvp-success-box">
+            <div class="success-icon">✓</div>
+            <h3 class="success-title">Presença Confirmada!</h3>
+            <p class="success-text" id="rsvp-success-message">Obrigado por confirmar! Estamos ansiosos para celebrar esse momento juntos.</p>
+            <button id="btn-edit-rsvp" class="btn-app-secondary">Editar Resposta</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. OPERAÇÃO LUA DE MEL / CONTRIBUIÇÃO VIA PIX
+           ==================================================================== -->
+      <section id="presentes" class="mobile-section">
+        <div class="mobile-section-header">
+          <span class="section-script-tag">Mala Pronta!</span>
+          <h2 class="mobile-section-title">Operação Lua de Mel</h2>
+          <p class="mobile-section-subtitle">Sua presença é o nosso maior presente!</p>
+        </div>
+
+        <!-- Card Explicativo: Casa Já Montada / Pix para a Viagem -->
+        <div class="honeymoon-story-card">
+          <div class="honeymoon-story-icon">✈️</div>
+          <div class="honeymoon-story-content">
+            <h4 class="honeymoon-story-title">Nossa Casinha Já Tem Tudo!</h4>
+            <p class="honeymoon-story-text">
+              Como já temos nossa casinha mobiliada com todos os móveis e eletrodomésticos, não faremos lista de presentes tradicional para a casa.
+              O nosso maior sonho agora é a <strong>viagem de Lua de Mel</strong>!
+              Quem desejar nos abençoar, pode nos presentear com uma contribuição via Pix com o valor que sentir no coração.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card do Pix com Chave e Dados Completos -->
+        <div class="direct-pix-card-m">
+          <div class="pix-badge-m">Chave Pix dos Noivos</div>
+          <p class="pix-card-subtitle">Copie a chave abaixo para realizar a transferência no aplicativo do seu banco:</p>
+          
+          <div class="pix-key-box">
+            <span class="pix-key-type">Chave Celular</span>
+            <code class="pix-code-text" id="pix-key-value">41998867853</code>
+          </div>
+
+          <div class="pix-account-table">
+            <div class="pix-row">
+              <span class="pix-row-label">Beneficiária:</span>
+              <span class="pix-row-value highlight">Camila Fernandes Cordeiro</span>
+            </div>
+            <div class="pix-row">
+              <span class="pix-row-label">Instituição:</span>
+              <span class="pix-row-value">Nu Pagamentos (Nubank)</span>
+            </div>
+            <div class="pix-row">
+              <span class="pix-row-label">Tipo de Chave:</span>
+              <span class="pix-row-value">Telefone Celular</span>
+            </div>
+          </div>
+
+          <button id="btn-copy-pix-main" class="btn-copy-pix-hero">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span id="copy-pix-main-label">Copiar Chave Pix</span>
+          </button>
+          
+          <p class="pix-footer-blessing">
+            Todo carinho recebido será transformado em momentos inesquecíveis na nossa lua de mel. Muito obrigado! ❤️
+          </p>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. MURAL DE RECADOS
+           ==================================================================== -->
+      <section id="recados" class="mobile-section">
+        <div class="mobile-section-header">
+          <span class="section-script-tag">Votos de Felicidade</span>
+          <h2 class="mobile-section-title">Mural de Recados</h2>
+          <p class="mobile-section-subtitle">Deixe sua mensagem de carinho para Camila & Gustavo</p>
+        </div>
+
+        <!-- Formulário de Recado -->
+        <div class="guestbook-form-card-m">
+          <form id="guestbook-form">
+            <div class="form-group-m">
+              <label for="gb-name">Seu Nome *</label>
+              <input type="text" id="gb-name" required placeholder="Como quer ser identificado(a)" class="input-m">
+            </div>
+            <div class="form-group-m">
+              <label for="gb-relation">Parentesco / Amizade</label>
+              <input type="text" id="gb-relation" placeholder="Ex: Amigos, Primos..." class="input-m">
+            </div>
+            <div class="form-group-m">
+              <label for="gb-message">Sua Mensagem *</label>
+              <textarea id="gb-message" required rows="3" placeholder="Escreva seus votos para os noivos..." class="input-m"></textarea>
+            </div>
+            <button type="submit" class="btn-app-secondary full">Publicar no Mural</button>
+          </form>
+        </div>
+
+        <!-- Lista de Recados -->
+        <div class="guestbook-cards-grid" id="guestbook-list"></div>
+      </section>
+
+      <!-- Rodapé Mobile -->
+      <footer class="mobile-footer">
+        <img src="assets/monogram_transparent.png" alt="CG" class="footer-cg-logo">
+        <h3 class="footer-names">Camila & Gustavo</h3>
+        <p class="footer-date">12 de Dezembro de 2026 • Florença Festas</p>
+        <button id="btn-open-admin" class="btn-admin-subtle">Área dos Noivos (Lista de Convidados)</button>
+        <p class="footer-bottom-txt">Feito com muito amor para o nosso grande dia ❤️</p>
+      </footer>
+
+    </main>
+
+    <!-- ====================================================================
+         BARRA DE NAVEGAÇÃO INFERIOR FIXA (MOBILE APP NAVIGATION BAR)
+         ==================================================================== -->
+    <nav class="mobile-bottom-nav" aria-label="Navegação móvel">
+      <a href="#convite-nativo" class="bottom-nav-item active">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Convite</span>
+      </a>
+      <a href="#contagem" class="bottom-nav-item">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        <span>Data</span>
+      </a>
+      <a href="#local" class="bottom-nav-item">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Local</span>
+      </a>
+      <a href="#rsvp" class="bottom-nav-item nav-highlight">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        <span>RSVP</span>
+      </a>
+      <a href="#presentes" class="bottom-nav-item">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        <span>Lua de Mel</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- MODAL: PAINEL ADMINISTRATIVO (RSVP) -->
+  <div id="admin-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card admin-card">
+      <button class="modal-close-btn" id="btn-close-admin-modal" aria-label="Fechar Painel">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-badge">Área dos Noivos</span>
+        <h3 class="modal-title">Gestão de Convidados & RSVP</h3>
+        <p class="modal-desc">Visualize quem já confirmou presença no casamento.</p>
+      </div>
+
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <span class="stat-number" id="stat-total-rsvp">0</span>
+          <span class="stat-label">Respostas</span>
+        </div>
+        <div class="admin-stat-card highlight">
+          <span class="stat-number" id="stat-confirmed-adults">0</span>
+          <span class="stat-label">Adultos</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="stat-number" id="stat-confirmed-kids">0</span>
+          <span class="stat-label">Crianças</span>
+        </div>
+        <div class="admin-stat-card declined">
+          <span class="stat-number" id="stat-declined">0</span>
+          <span class="stat-label">Não irão</span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button id="btn-export-csv" class="btn-app-secondary">Exportar Excel / CSV</button>
+        <button id="btn-clear-rsvp" class="btn-ghost" style="color: #c95151;">Limpar Testes</button>
+      </div>
+
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>WhatsApp</th>
+              <th>Presença</th>
+              <th>Adultos</th>
+              <th>Crianças</th>
+              <th>Acompanhantes</th>
+              <th>Restrições</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="admin-rsvp-table-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

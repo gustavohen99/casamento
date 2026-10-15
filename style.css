@@ -1,0 +1,1368 @@
+/* ==========================================================================
+   CASAMENTO CAMILA & GUSTAVO • MOBILE-FIRST DESIGN SYSTEM
+   Identidade: Boho Chic, Papel Artesanal, Telas Nativas & Foco Mobile
+   ========================================================================== */
+
+:root {
+  --color-bg: #FAF7F2;
+  --color-bg-ambient: #EBE3D5;
+  --color-card: #FFFFFF;
+  --color-paper: #FBF9F5;
+  --color-text-main: #3E352E;
+  --color-text-muted: #7A6F66;
+  --color-text-light: #9C9187;
+  
+  --color-terracotta: #BF875E;
+  --color-terracotta-dark: #9E653E;
+  --color-sand: #D5C4AF;
+  --color-sand-light: #ECE5DA;
+  --color-gold: #C5A059;
+  --color-sage: #8A9A86;
+  
+  --shadow-sm: 0 2px 8px rgba(62, 53, 46, 0.06);
+  --shadow-md: 0 6px 20px rgba(62, 53, 46, 0.08);
+  --shadow-card: 0 12px 32px rgba(62, 53, 46, 0.1);
+  --shadow-float: 0 10px 25px rgba(191, 135, 94, 0.28);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: 'Pinyon Script', cursive;
+
+  --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+  background-color: var(--color-bg-ambient);
+}
+
+body.mobile-first-body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-ambient);
+  color: var(--color-text-main);
+  line-height: 1.55;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#petals-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   SHELL MOBILE (App-like container)
+   ========================================================================== */
+.mobile-app-shell {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  box-shadow: 0 0 50px rgba(62, 53, 46, 0.15);
+  position: relative;
+  z-index: 10;
+  padding-bottom: 74px; /* Espaço para a barra inferior fixa */
+}
+
+/* Barra superior discreta */
+.mobile-top-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 900;
+  background: rgba(250, 247, 242, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(213, 196, 175, 0.4);
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.15rem;
+}
+
+.top-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text-main);
+}
+
+.top-bar-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.top-bar-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.top-bar-rsvp-btn {
+  background-color: var(--color-terracotta);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(191, 135, 94, 0.3);
+  transition: all var(--transition);
+}
+
+.top-bar-rsvp-btn:hover {
+  background-color: var(--color-terracotta-dark);
+}
+
+/* ==========================================================================
+   1. TELA NATIVA DO CONVITE (DESIGN EXCLUSIVO & RESPONSIVO)
+   ========================================================================== */
+.native-invite-screen {
+  position: relative;
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.8rem 1.25rem 2.5rem;
+  background-color: #FAF7F2;
+  overflow: hidden;
+}
+
+/* Cartão com acabamento fino */
+.native-invite-card {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho */
+.invite-header-block {
+  margin-bottom: 0.85rem;
+}
+
+.invite-main-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.invite-names {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #3E352E;
+  text-transform: uppercase;
+}
+
+.invite-sub {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Monograma CG */
+.invite-monogram-block {
+  margin: 0.4rem 0 0.8rem;
+}
+
+.monogram-wrapper {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.invite-monogram-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.04));
+}
+
+/* Aquarela Florença Festas */
+.invite-venue-illustration-block {
+  width: 100%;
+  max-width: 250px;
+  margin: 0.2rem auto 1rem;
+}
+
+.invite-venue-watercolor {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Frase */
+.invite-quote-block {
+  margin-bottom: 1.25rem;
+}
+
+.invite-quote-line {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4A3E39;
+  line-height: 1.45;
+}
+
+/* Bloco da Data */
+.invite-date-block {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1.4rem;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.date-side-rule {
+  flex: 1;
+  border-top: 1px solid var(--color-sand);
+  border-bottom: 1px solid var(--color-sand);
+  padding: 0.35rem 0;
+  text-align: center;
+}
+
+.date-day-label, .date-time-label {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.date-number-col {
+  padding: 0 0.25rem;
+}
+
+.date-big-number {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-terracotta);
+  display: block;
+}
+
+.date-month-row {
+  margin-top: 0.35rem;
+}
+
+.date-month-label {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+}
+
+/* Bloco de Localização */
+.invite-location-block {
+  margin-bottom: 1.75rem;
+}
+
+.invite-venue-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-text-main);
+  margin-bottom: 0.25rem;
+}
+
+.invite-venue-address, .invite-venue-city {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Botões do Convite Nativo */
+.native-invite-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.action-sub-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.scroll-indicator-native {
+  margin-top: 0.5rem;
+}
+
+.scroll-arrow-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: bounceHint 2s infinite ease-in-out;
+}
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ==========================================================================
+   SEÇÕES GERAIS MOBILE
+   ========================================================================== */
+.mobile-section {
+  padding: 3rem 1.25rem;
+  border-top: 1px solid var(--color-sand-light);
+}
+
+.mobile-section-header {
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+.section-script-tag {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--color-terracotta);
+  display: block;
+  line-height: 1.1;
+}
+
+.mobile-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  margin-bottom: 0.35rem;
+}
+
+.mobile-section-subtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. CONTAGEM REGRESSIVA MOBILE
+   ========================================================================== */
+.countdown-mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cd-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 10px;
+  padding: 0.9rem 0.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.cd-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-terracotta);
+}
+
+.cd-lbl {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.calendar-card-mobile {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-date-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--color-sand);
+}
+
+.pill-day {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text-main);
+}
+
+.pill-time {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-terracotta);
+}
+
+.calendar-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.btn-cal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-sand);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-cal:hover {
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+}
+
+/* ==========================================================================
+   3. O LOCAL MOBILE
+   ========================================================================== */
+.venue-mobile-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.venue-mobile-thumb {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background-color: #F8F5F0;
+  overflow: hidden;
+}
+
+.venue-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.venue-pill-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-terracotta-dark);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-sand);
+}
+
+.venue-body-mobile {
+  padding: 1.4rem;
+}
+
+.venue-title-mobile {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.venue-info-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  align-items: flex-start;
+}
+
+.v-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-sand-light);
+  color: var(--color-terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-text strong {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-main);
+}
+
+.v-text span {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.venue-gps-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.btn-gps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-gmaps {
+  background-color: var(--color-terracotta);
+  color: #fff;
+}
+
+.btn-waze-m {
+  background-color: #33CCFF;
+  color: #00334E;
+}
+
+.btn-copy-addr-full {
+  width: 100%;
+  margin-top: 0.6rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-sand);
+  color: var(--color-text-main);
+  padding: 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.map-container-mobile {
+  border-top: 1px solid var(--color-sand-light);
+  line-height: 0;
+}
+
+/* ==========================================================================
+   4. CONFIRMAÇÃO DE PRESENÇA (RSVP)
+   ========================================================================== */
+.rsvp-card-mobile {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 16px;
+  padding: 1.6rem 1.25rem;
+  box-shadow: var(--shadow-card);
+}
+
+.rsvp-mini-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 0.4rem;
+  display: block;
+}
+
+.rsvp-deadline-text {
+  font-size: 0.85rem;
+  color: var(--color-terracotta-dark);
+  margin-top: 0.35rem;
+}
+
+.form-group-m {
+  margin-bottom: 1.1rem;
+}
+
+.form-group-m label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.input-m {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-sand);
+  background-color: #FBF9F6;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--color-text-main);
+  transition: all var(--transition);
+}
+
+.input-m:focus {
+  outline: none;
+  border-color: var(--color-terracotta);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(191, 135, 94, 0.15);
+}
+
+.radio-pill-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.radio-pill {
+  flex: 1;
+  cursor: pointer;
+}
+
+.radio-pill input {
+  display: none;
+}
+
+.pill-btn {
+  display: block;
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-sand);
+  background-color: #FBF9F6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.radio-pill input:checked + .pill-btn {
+  border-color: var(--color-terracotta);
+  background-color: rgba(191, 135, 94, 0.1);
+  color: var(--color-terracotta-dark);
+}
+
+.form-row-m {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.form-group-m.half {
+  flex: 1;
+}
+
+.form-buttons-m {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.4rem;
+}
+
+.btn-app-primary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-terracotta);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-float);
+  transition: all var(--transition);
+}
+
+.btn-app-primary:hover, .btn-app-primary:active {
+  background-color: var(--color-terracotta-dark);
+  transform: translateY(-1px);
+}
+
+.btn-app-whatsapp {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #25D366;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all var(--transition);
+}
+
+.btn-app-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  border: 1.5px solid var(--color-sand);
+  padding: 0.75rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-app-secondary.full {
+  width: 100%;
+}
+
+.btn-app-secondary:hover {
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+}
+
+.rsvp-success-box {
+  display: none;
+  text-align: center;
+  padding: 1.8rem 0.5rem;
+}
+
+.rsvp-success-box.show {
+  display: block;
+}
+
+.success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-sage);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+}
+
+.success-title {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.4rem;
+}
+
+.success-text {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================================================
+   5. OPERAÇÃO LUA DE MEL / COTAS DE VIAGEM PIX MOBILE
+   ========================================================================== */
+.honeymoon-story-card {
+  background: linear-gradient(135deg, #FAF7F2 0%, #F5EFEB 100%);
+  border: 1px solid var(--color-sand);
+  border-left: 4px solid var(--color-terracotta);
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem;
+  margin-bottom: 1.35rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.honeymoon-story-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.honeymoon-story-content {
+  flex: 1;
+}
+
+.honeymoon-story-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.01em;
+}
+
+.honeymoon-story-text {
+  font-size: 0.84rem;
+  color: var(--color-text-main);
+  line-height: 1.5;
+}
+
+.honeymoon-story-text strong {
+  color: var(--color-terracotta-dark);
+  font-weight: 600;
+}
+
+.pix-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.direct-pix-card-m {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.direct-pix-card-m::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold), var(--color-sage));
+}
+
+.pix-badge-m {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.35rem;
+}
+
+.pix-card-subtitle {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.1rem;
+  line-height: 1.4;
+}
+
+.pix-key-box {
+  background: linear-gradient(135deg, #FAF7F2 0%, #F5EFEB 100%);
+  border: 1.5px dashed var(--color-terracotta);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pix-key-type {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-terracotta);
+  font-weight: 600;
+}
+
+.pix-code-text {
+  font-family: monospace, var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: 0.06em;
+  user-select: all;
+  margin: 0.15rem 0;
+}
+
+.pix-account-table {
+  background: #FAF7F2;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.pix-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.pix-row-label {
+  color: var(--color-text-light);
+  font-size: 0.78rem;
+}
+
+.pix-row-value {
+  font-weight: 600;
+  color: var(--color-text-main);
+  text-align: right;
+}
+
+.pix-row-value.highlight {
+  color: var(--color-terracotta-dark);
+}
+
+.btn-copy-pix-hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-terracotta);
+  color: #FFFFFF;
+  padding: 0.9rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(184, 92, 56, 0.25);
+  transition: all var(--transition);
+}
+
+.btn-copy-pix-hero:active {
+  transform: scale(0.98);
+}
+
+.pix-footer-blessing {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   6. MURAL DE RECADOS MOBILE
+   ========================================================================== */
+.guestbook-form-card-m {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.guestbook-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.guestbook-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand-light);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.gb-message-text {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--color-text-main);
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
+}
+
+.gb-author {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-terracotta-dark);
+}
+
+.gb-relation {
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+  display: block;
+}
+
+/* Rodapé Mobile */
+.mobile-footer {
+  background-color: #2F2722;
+  color: #EDE6DC;
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  margin-top: 1rem;
+}
+
+.footer-cg-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.footer-names {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2rem;
+}
+
+.footer-date {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sand);
+  margin-bottom: 1.2rem;
+}
+
+.btn-admin-subtle {
+  background: none;
+  border: none;
+  color: rgba(213, 196, 175, 0.7);
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.footer-bottom-txt {
+  font-size: 0.75rem;
+  color: rgba(237, 230, 220, 0.5);
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO INFERIOR FIXA (BOTTOM APP BAR)
+   ========================================================================== */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 64px;
+  background: rgba(250, 247, 242, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(213, 196, 175, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1000;
+  box-shadow: 0 -4px 16px rgba(62, 53, 46, 0.08);
+  padding: 0 0.5rem;
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  gap: 2px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+.bottom-nav-item span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.bottom-nav-item:hover, .bottom-nav-item.active {
+  color: var(--color-terracotta);
+}
+
+.bottom-nav-item.nav-highlight {
+  background-color: var(--color-terracotta);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  box-shadow: 0 2px 8px rgba(191, 135, 94, 0.35);
+}
+
+/* ==========================================================================
+   MODAIS MOBILE
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(47, 39, 34, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.modal-backdrop.show {
+  display: flex;
+}
+
+.modal-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 1.8rem 1.4rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.modal-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+  background: rgba(191, 135, 94, 0.1);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.modal-desc {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.modal-price-tag {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-terracotta);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.qrcode-wrapper {
+  background: #FAF7F2;
+  border: 1px solid var(--color-sand);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#pix-qrcode-canvas {
+  width: 160px !important;
+  height: 160px !important;
+  margin: 0 auto;
+  display: block;
+}
+
+.qrcode-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 0.4rem;
+}
+
+.copy-input-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.copy-feedback {
+  display: none;
+  font-size: 0.75rem;
+  color: var(--color-sage);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+.pix-info-notice {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  background-color: #FAF7F2;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Admin Modal */
+.admin-card {
+  max-width: 460px;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-stat-card {
+  background: #FAF7F2;
+  border: 1px solid var(--color-sand);
+  border-radius: 8px;
+  padding: 0.85rem;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.admin-table-wrapper {
+  overflow-x: auto;
+  font-size: 0.75rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+  padding: 0.5rem 0.4rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-sand-light);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-sand);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
