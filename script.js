@@ -326,8 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const encoded = encodeURIComponent(text);
-      // Número padrão para o casal (pode ser o telefone do Gustavo)
-      window.open(`https://api.whatsapp.com/send?phone=5541999999999&text=${encoded}`, '_blank');
+      // Número oficial para confirmação via WhatsApp
+      window.open(`https://api.whatsapp.com/send?phone=5541998867853&text=${encoded}`, '_blank');
     });
   }
 
