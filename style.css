@@ -1037,6 +1037,16 @@ body.mobile-first-body {
   gap: 0.85rem;
 }
 
+.guestbook-empty,
+.guestbook-loading {
+  background: #FFFFFF;
+  border: 1.5px dashed var(--color-sand);
+  border-radius: 12px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
 .guestbook-card {
   background: #FFFFFF;
   border: 1px solid var(--color-sand-light);

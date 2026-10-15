@@ -272,14 +272,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => console.error('Erro ao enviar para Google Sheets:', err));
       }
 
-      // Também adiciona ao mural de recados se houver mensagem
+      // Também adiciona ao mural de recados na tela se houver mensagem
       if (message) {
-        saveGuestbookEntry({
+        guestbookMessages.unshift({
           name,
           relation: 'Convidado(a)',
           message,
           date: new Date().toLocaleDateString('pt-BR')
         });
+        renderGuestbook();
       }
 
       // Exibe sucesso
@@ -331,80 +332,105 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 8. MURAL DE RECADOS (GUESTBOOK)
+  // 8. MURAL DE RECADOS (SINCRONIZADO COM GOOGLE SHEETS)
   // =========================================================================
   const guestbookForm = document.getElementById('guestbook-form');
   const guestbookList = document.getElementById('guestbook-list');
-
-  const defaultMessages = [
-    {
-      name: "Tia Regina & Família",
-      relation: "Tia da Noiva",
-      message: "Camila e Gustavo, que emoção ver esse momento chegar! Que Deus abençoe cada passo dessa nova família com paz, sabedoria e muito amor. Estaremos lá comemorando!",
-      date: "10/10/2026"
-    },
-    {
-      name: "Lucas & Marcela",
-      relation: "Padrinhos",
-      message: "Amigos do coração, que alegria imensa fazer parte desse sonho ao lado de vocês! Já estamos com a roupa pronta para brindar muito no Florença Festas!",
-      date: "12/10/2026"
-    },
-    {
-      name: "Fernando Ribeiro",
-      relation: "Amigo de infância",
-      message: "Gustavão, quem te viu quem te vê, casando com essa mulher incrível! Vocês foram feitos um para o outro. Parabéns e contem sempre comigo!",
-      date: "14/10/2026"
-    }
-  ];
-
-  function getGuestbookEntries() {
-    const stored = localStorage.getItem('wedding_guestbook_camila_gustavo');
-    if (!stored) {
-      localStorage.setItem('wedding_guestbook_camila_gustavo', JSON.stringify(defaultMessages));
-      return defaultMessages;
-    }
-    return JSON.parse(stored);
-  }
-
-  function saveGuestbookEntry(entry) {
-    const list = getGuestbookEntries();
-    list.unshift(entry);
-    localStorage.setItem('wedding_guestbook_camila_gustavo', JSON.stringify(list));
-    renderGuestbook();
-  }
+  let guestbookMessages = [];
 
   function renderGuestbook() {
     if (!guestbookList) return;
-    const entries = getGuestbookEntries();
-    guestbookList.innerHTML = entries.map(item => `
+
+    if (!guestbookMessages || guestbookMessages.length === 0) {
+      guestbookList.innerHTML = `
+        <div class="guestbook-empty">
+          <span style="font-size: 1.6rem; display: block; margin-bottom: 0.35rem;">💌</span>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">Seja o primeiro a deixar uma mensagem de carinho para Camila & Gustavo!</p>
+        </div>
+      `;
+      return;
+    }
+
+    guestbookList.innerHTML = guestbookMessages.map(item => `
       <div class="guestbook-card">
         <p class="gb-message-text">"${item.message}"</p>
         <span class="gb-author">${item.name}</span>
-        <span class="gb-relation">${item.relation || 'Convidado(a)'} • ${item.date}</span>
+        <span class="gb-relation">${item.relation || 'Convidado(a)'}${item.date ? ` • ${item.date}` : ''}</span>
       </div>
     `).join('');
   }
 
+  async function loadGuestbook() {
+    if (!guestbookList) return;
+    guestbookList.innerHTML = `
+      <div class="guestbook-loading">
+        <span>Carregando recados...</span>
+      </div>
+    `;
+
+    try {
+      if (GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.trim() !== '') {
+        const response = await fetch(GOOGLE_SHEETS_URL);
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          guestbookMessages = data;
+        }
+      }
+    } catch (err) {
+      console.log('Aviso ao carregar mural:', err);
+    }
+
+    renderGuestbook();
+  }
+
   if (guestbookForm) {
-    guestbookForm.addEventListener('submit', (e) => {
+    guestbookForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const submitBtn = guestbookForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Publicando recado...';
+      }
+
       const name = document.getElementById('gb-name').value.trim();
       const relation = document.getElementById('gb-relation').value.trim() || 'Convidado(a)';
       const message = document.getElementById('gb-message').value.trim();
+      const date = new Date().toLocaleDateString('pt-BR');
 
-      saveGuestbookEntry({
-        name,
-        relation,
-        message,
-        date: new Date().toLocaleDateString('pt-BR')
-      });
+      // Adiciona na hora na tela para feedback instantâneo
+      guestbookMessages.unshift({ name, relation, message, date });
+      renderGuestbook();
+
+      // Envia diretamente para a Planilha do Google Sheets
+      if (GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.trim() !== '') {
+        const params = new URLSearchParams();
+        params.append('action', 'guestbook');
+        params.append('name', name);
+        params.append('relation', relation);
+        params.append('message', message);
+        params.append('date', new Date().toLocaleString('pt-BR'));
+
+        try {
+          await fetch(GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: params
+          });
+        } catch (err) {
+          console.error('Erro ao enviar recado para o Google Sheets:', err);
+        }
+      }
 
       guestbookForm.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Publicar no Mural';
+      }
       alert('Mensagem enviada com sucesso! Muito obrigado pelo carinho.');
     });
   }
 
-  renderGuestbook();
+  loadGuestbook();
 
   // =========================================================================
   // 10. ENGINE DE PARTÍCULAS (Pétalas de Flores & Pó Dourado)
