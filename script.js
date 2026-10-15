@@ -183,8 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 6. CONFIRMAÇÃO DE PRESENÇA (RSVP) & LOCALSTORAGE
+  // 6. CONFIRMAÇÃO DE PRESENÇA (RSVP COM GOOGLE SHEETS)
   // =========================================================================
+  // Cole aqui a URL do seu Google Apps Script (Web App) para salvar na Planilha:
+  const GOOGLE_SHEETS_URL = "";
   const rsvpForm = document.getElementById('rsvp-form');
   const attendanceDetails = document.getElementById('attendance-details');
   const rsvpSuccessBox = document.getElementById('rsvp-success-box');
@@ -213,13 +215,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = getRsvpList();
     list.unshift(entry);
     localStorage.setItem('wedding_rsvp_camila_gustavo', JSON.stringify(list));
-    updateAdminStats();
   }
 
   // Envio do formulário
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      const btnSubmit = document.getElementById('btn-submit-rsvp');
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Enviando confirmação...';
+      }
 
       const name = document.getElementById('rsvp-name').value.trim();
       const phone = document.getElementById('rsvp-phone').value.trim();
@@ -244,6 +251,26 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       saveRsvp(rsvpData);
+
+      // Envia diretamente para a Planilha do Google Sheets (se configurada)
+      if (GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.trim() !== '') {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('attendance', attendance);
+        formData.append('adults', attendance === 'sim' ? adults : 0);
+        formData.append('kids', attendance === 'sim' ? kids : 0);
+        formData.append('companions', attendance === 'sim' ? companions : '');
+        formData.append('diet', attendance === 'sim' ? diet : '');
+        formData.append('message', message);
+        formData.append('date', new Date().toLocaleString('pt-BR'));
+
+        fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        }).catch(err => console.error('Erro ao enviar para Google Sheets:', err));
+      }
 
       // Também adiciona ao mural de recados se houver mensagem
       if (message) {
@@ -270,6 +297,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btnEditRsvp.addEventListener('click', () => {
       rsvpSuccessBox.classList.remove('show');
       rsvpForm.style.display = 'block';
+      const btnSubmit = document.getElementById('btn-submit-rsvp');
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Confirmar Presença no Site';
+      }
     });
   }
 
@@ -373,105 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderGuestbook();
-
-  // =========================================================================
-  // 9. PAINEL ADMINISTRATIVO DOS NOIVOS (RSVP)
-  // =========================================================================
-  const btnOpenAdmin = document.getElementById('btn-open-admin');
-  const adminModal = document.getElementById('admin-modal');
-  const btnCloseAdmin = document.getElementById('btn-close-admin-modal');
-  const btnExportCsv = document.getElementById('btn-export-csv');
-  const btnClearRsvp = document.getElementById('btn-clear-rsvp');
-  const adminTableBody = document.getElementById('admin-rsvp-table-body');
-
-  function updateAdminStats() {
-    const list = getRsvpList();
-    const confirmed = list.filter(item => item.attendance === 'sim');
-    const declined = list.filter(item => item.attendance === 'nao');
-
-    const totalAdults = confirmed.reduce((acc, item) => acc + (item.adults || 1), 0);
-    const totalKids = confirmed.reduce((acc, item) => acc + (item.kids || 0), 0);
-
-    const statTotal = document.getElementById('stat-total-rsvp');
-    const statAdults = document.getElementById('stat-confirmed-adults');
-    const statKids = document.getElementById('stat-confirmed-kids');
-    const statDeclined = document.getElementById('stat-declined');
-
-    if (statTotal) statTotal.textContent = list.length;
-    if (statAdults) statAdults.textContent = totalAdults;
-    if (statKids) statKids.textContent = totalKids;
-    if (statDeclined) statDeclined.textContent = declined.length;
-
-    if (adminTableBody) {
-      if (list.length === 0) {
-        adminTableBody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 2rem; color: #888;">Nenhuma confirmação registrada ainda.</td></tr>`;
-      } else {
-        adminTableBody.innerHTML = list.map(item => `
-          <tr>
-            <td><strong>${item.name}</strong></td>
-            <td>${item.phone}</td>
-            <td><span style="color: ${item.attendance === 'sim' ? '#2e7d32' : '#c62828'}; font-weight:600;">${item.attendance === 'sim' ? 'Confirmado ✓' : 'Recusado ✕'}</span></td>
-            <td>${item.attendance === 'sim' ? item.adults : '-'}</td>
-            <td>${item.attendance === 'sim' ? item.kids : '-'}</td>
-            <td>${item.companions || '-'}</td>
-            <td>${item.diet || '-'}</td>
-            <td>${item.date}</td>
-          </tr>
-        `).join('');
-      }
-    }
-  }
-
-  if (btnOpenAdmin) {
-    btnOpenAdmin.addEventListener('click', () => {
-      updateAdminStats();
-      adminModal.classList.add('show');
-    });
-  }
-
-  if (btnCloseAdmin) {
-    btnCloseAdmin.addEventListener('click', () => {
-      adminModal.classList.remove('show');
-    });
-  }
-
-  adminModal.addEventListener('click', (e) => {
-    if (e.target === adminModal) {
-      adminModal.classList.remove('show');
-    }
-  });
-
-  if (btnExportCsv) {
-    btnExportCsv.addEventListener('click', () => {
-      const list = getRsvpList();
-      if (list.length === 0) {
-        alert('Nenhuma confirmação para exportar.');
-        return;
-      }
-
-      let csvContent = "Nome;Telefone;Presenca;Adultos;Criancas;Acompanhantes;Restricoes;Mensagem;Data\n";
-      list.forEach(i => {
-        csvContent += `"${i.name}";"${i.phone}";"${i.attendance === 'sim' ? 'Sim' : 'Nao'}";"${i.adults}";"${i.kids}";"${i.companions || ''}";"${i.diet || ''}";"${(i.message || '').replace(/"/g, '""')}";"${i.date}"\n`;
-      });
-
-      const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute("download", `lista_rsvp_camila_gustavo_${new Date().toISOString().slice(0, 10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-  }
-
-  if (btnClearRsvp) {
-    btnClearRsvp.addEventListener('click', () => {
-      if (confirm('Tem certeza de que deseja limpar a lista de confirmações de teste?')) {
-        localStorage.removeItem('wedding_rsvp_camila_gustavo');
-        updateAdminStats();
-      }
-    });
-  }
 
   // =========================================================================
   // 10. ENGINE DE PARTÍCULAS (Pétalas de Flores & Pó Dourado)

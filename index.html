@@ -461,7 +461,6 @@
         <img src="assets/monogram_transparent.png" alt="CG" class="footer-cg-logo">
         <h3 class="footer-names">Camila & Gustavo</h3>
         <p class="footer-date">12 de Dezembro de 2026 • Florença Festas</p>
-        <button id="btn-open-admin" class="btn-admin-subtle">Área dos Noivos (Lista de Convidados)</button>
         <p class="footer-bottom-txt">Feito com muito amor para o nosso grande dia ❤️</p>
       </footer>
 
@@ -493,62 +492,6 @@
       </a>
     </nav>
 
-  </div>
-
-  <!-- MODAL: PAINEL ADMINISTRATIVO (RSVP) -->
-  <div id="admin-modal" class="modal-backdrop" aria-hidden="true">
-    <div class="modal-card admin-card">
-      <button class="modal-close-btn" id="btn-close-admin-modal" aria-label="Fechar Painel">&times;</button>
-      
-      <div class="modal-header">
-        <span class="modal-badge">Área dos Noivos</span>
-        <h3 class="modal-title">Gestão de Convidados & RSVP</h3>
-        <p class="modal-desc">Visualize quem já confirmou presença no casamento.</p>
-      </div>
-
-      <div class="admin-stats-grid">
-        <div class="admin-stat-card">
-          <span class="stat-number" id="stat-total-rsvp">0</span>
-          <span class="stat-label">Respostas</span>
-        </div>
-        <div class="admin-stat-card highlight">
-          <span class="stat-number" id="stat-confirmed-adults">0</span>
-          <span class="stat-label">Adultos</span>
-        </div>
-        <div class="admin-stat-card">
-          <span class="stat-number" id="stat-confirmed-kids">0</span>
-          <span class="stat-label">Crianças</span>
-        </div>
-        <div class="admin-stat-card declined">
-          <span class="stat-number" id="stat-declined">0</span>
-          <span class="stat-label">Não irão</span>
-        </div>
-      </div>
-
-      <div class="admin-actions">
-        <button id="btn-export-csv" class="btn-app-secondary">Exportar Excel / CSV</button>
-        <button id="btn-clear-rsvp" class="btn-ghost" style="color: #c95151;">Limpar Testes</button>
-      </div>
-
-      <div class="admin-table-wrapper">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>WhatsApp</th>
-              <th>Presença</th>
-              <th>Adultos</th>
-              <th>Crianças</th>
-              <th>Acompanhantes</th>
-              <th>Restrições</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="admin-rsvp-table-body"></tbody>
-        </table>
-      </div>
-
-    </div>
   </div>
 
   <script type="module" src="script.js"></script>
